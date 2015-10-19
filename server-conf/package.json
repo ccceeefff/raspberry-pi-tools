@@ -1,0 +1,15 @@
+{
+  "name": "server-conf",
+  "version": "0.0.1",
+  "description": "A lightweight server for configuring a raspberry pi WiFi to switch from AP mode to client mode",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "~4.10.2",
+    "body-parser": "^1.11.0"
+  }
+}
