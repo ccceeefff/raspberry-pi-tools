@@ -1,0 +1,34 @@
+/**
+ * Simple node wrapper for accessing hostapd
+ */
+
+var exec = require('child_process').exec;
+
+function isRunning(cb) {
+	exec('pidof hostapd', function(error, stdout, stderr){
+		if(error){
+			// hostapd is not running
+			cb(false);
+		} else {
+			cb(true, stdout);
+		}
+	});
+}
+
+function start(cb){
+	exec('/etc/init.d/hostapd start', function(error, stdout, stderr){
+		cb(error);
+	});
+}
+
+function stop(cb){
+	exec('/etc/init.d/hostapd stop', function(error, stdout, stderr){
+		cb(error);
+	});
+}
+
+module.exports = {
+	isRunning: isRunning,
+	start: start,
+	stop: stop
+}
