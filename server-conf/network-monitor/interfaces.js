@@ -27,16 +27,24 @@ function parseBlock(block, fields){
 function parseInterfaces(output){
 	var lines = output.split('\n');
 	var string = "";
-	var blocks = {}};
+	var blocks = {};
 	lines.forEach(function(line){
-		if(['\t', ' '].indexOf(line[0]) === -1 && temp.length > 0){
-			var ifaceName = string.substring(0, string.indexOf('\t'));
-			var iface = parseBlock(string, ifconfig_fields);
-			blocks[ifaceName] = iface;
+		if(['\t', ' '].indexOf(line[0]) === -1 && line.length > 0){
+			if(string.length > 0){
+				var ifaceName = string.substring(0, string.indexOf(' ')).trim();
+				var iface = parseBlock(string, ifconfig_fields);
+				blocks[ifaceName] = iface;
+			}
 			string = "";
 		}
 		string += line;
-	});	
+	});
+
+	// last item
+	var ifaceName = string.substring(0, string.indexOf(' ')).trim();
+	var iface = parseBlock(string, ifconfig_fields);
+	blocks[ifaceName] = iface;
+	
 	return blocks;
 }
 
