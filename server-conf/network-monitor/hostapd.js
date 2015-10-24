@@ -1,5 +1,6 @@
 /**
  * Simple node wrapper for accessing hostapd
+ * Assumes this runs with super user privilege
  */
 
 var exec = require('child_process').exec;
