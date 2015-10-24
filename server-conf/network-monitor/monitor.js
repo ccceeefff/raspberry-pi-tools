@@ -20,9 +20,12 @@
 
 var os = require('os');
 
+var interfaces = require('./interfaces');
+
 function getIPAddres(interfaceName){
 	var ifaces = os.networkInterfaces();
 	var ipAddress = "";
+	console.log(JSON.stringify(ifaces, null, 2)); 
 	ifaces[interfaceName].forEach(function(iface){
 		if('IPv4' !== iface.family || iface.internal !== false){
 			return;
@@ -39,4 +42,8 @@ function getIPAddres(interfaceName){
 
 var ifaceName = "wlan0";
 
-console.log("wlan0 current ip: " + getIPAddres(ifaceName));
+// console.log("wlan0 current ip: " + getIPAddres(ifaceName));
+interfaces.ifconfig(null, function(error, ifaces){
+	console.log("error: " + error);
+	console.log("ifaces: " + JSON.stringify(ifaces, null, 2));
+});
