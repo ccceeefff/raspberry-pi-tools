@@ -28,6 +28,12 @@ function stop(cb){
 	});
 }
 
+function restart(cb){
+	exec('/etc/init.d/hostapd restart', function(error, stdout, stderr){
+		cb(error);
+	});
+}
+
 module.exports = {
 	isRunning: isRunning,
 	start: start,

@@ -28,8 +28,15 @@ function stop(cb){
 	});
 }
 
+function restart(cb){
+	exec('/etc/init.d/dnsmasq restart', function(error, stdout, stderr){
+		cb(error);
+	});
+}
+
 module.exports = {
 	isRunning: isRunning,
 	start: start,
-	stop: stop
+	stop: stop,
+	restart: restart
 }

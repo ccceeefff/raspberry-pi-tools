@@ -37,6 +37,7 @@ function parseInterfaces(output){
 		if(line.trim().length == 0 && string.length > 0){
 			var ifaceName = string.substring(0, string.indexOf(' ')).trim();
 			var iface = parseBlock(string, ifconfig_fields);
+			iface["name"] = ifaceName;
 			blocks[ifaceName] = iface;
 			string = "";
 		}
