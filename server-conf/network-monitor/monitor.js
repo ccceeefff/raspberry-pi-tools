@@ -81,6 +81,29 @@ function verifyServices(enable, callback){
 						}
 					}
 				});
+			},
+			function(next){
+				dnsmasq.isRunning(function(running, pid){
+					if(enable){
+						if(running){
+							dnsmasq.restart(function(error){
+								next(error);
+							});
+						} else {
+							dnsmasq.start(function(error){
+								next(error);
+							})
+						}
+					} else {
+						if(running){
+							dnsmasq.stop(function(error){
+								next(error);
+							});
+						} else {
+							next();
+						}
+					}
+				});
 			}
 		], callback);
 }
