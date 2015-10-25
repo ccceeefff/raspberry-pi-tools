@@ -37,5 +37,6 @@ function restart(cb){
 module.exports = {
 	isRunning: isRunning,
 	start: start,
-	stop: stop
+	stop: stop,
+	restart: restart
 }

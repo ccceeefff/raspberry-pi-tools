@@ -31,20 +31,26 @@ var netmask = "255.255.255.0";
 function reestablishConnection(iface, callback){
 	// reset the network interface
 	var name = iface['name'];
-	async.serial([
+	async.series([
 			function(next){
-				interfaces.ifdown(name, function(error){
-					next(error);
+				async.setImmediate(function(){
+					interfaces.ifdown(name, function(error){
+						next(error);
+					});
 				});
 			},
 			function(next){
-				interfaces.ifup(name, function(error){
-					next(error);
+				async.setImmediate(function(){
+					interfaces.ifup(name, function(error){
+						next(error);
+					});
 				});
 			},
 			function(next){
-				interfaces.renewDHCP(name, function(error){
-					next(error);
+				async.setImmediate(function(){
+					interfaces.renewDHCP(name, function(error){
+						next(error);
+					});
 				});
 			}
 		],
@@ -52,7 +58,7 @@ function reestablishConnection(iface, callback){
 }
 
 function verifyServices(enable, callback){
-	async.serial([
+	async.series([
 			function(next){
 				hostapd.isRunning(function(running, pid){
 					if(enable){
@@ -80,19 +86,19 @@ function verifyServices(enable, callback){
 }
 
 function setupAPMode(iface, callback){
-	async.serial([
+	async.series([
 			function(next){
 				interfaces.configureInterface(iface['name'], staticIP, netmask, function(error){
 					next(error);
 				});
 			},
 			function(next){
-				hostapd.start(function(error){
+				hostapd.restart(function(error){
 					next(error);
 				});
 			},
 			function(next){
-				dnsmasq.start(function(error){
+				dnsmasq.restart(function(error){
 					next(error);
 				});
 			}
@@ -102,11 +108,12 @@ function setupAPMode(iface, callback){
 
 function checkInterface(iface){
 	var ipAddress = iface['ip_addr'];
-	if(ipAddress !== null){
+	if(ipAddress != null){
 		var inAPMode = (ipAddress == staticIP);
 		if(inAPMode){
-			reestablishConnection(iface, function(error, results)){
+			reestablishConnection(iface, function(error, results){
 				console.log("Trying to re-establish connection: " + error);
+				runQuery();
 			});
 		} else {
 			verifyServices(inAPMode, function(error, results){
@@ -115,7 +122,11 @@ function checkInterface(iface){
 		}
 	} else {
 		setupAPMode(iface, function(error, results){
-			console.log("Failed to set up AP mode: " + error);
+			if(error){
+				console.log("Failed to set up AP mode: " + error);
+			} else {
+				console.log("Switched to AP mode");
+			}
 		});
 	}
 }
@@ -147,6 +158,7 @@ function runQuery(){
 	});
 }
 
-setInterval(function(){
+//setInterval(function(){
 	runQuery();
-}, 60000);
+//}, 60000);
+

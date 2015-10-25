@@ -69,7 +69,9 @@ function ifconfig(iface, cb){
  * Bring up interface
  */
 function ifup(iface, cb){
+	console.log('bringing up interface: ' + iface);
 	exec('ifup ' + iface, function(error, stdout, stderr){
+		console.log(stdout);
 		cb(error);
 	});
 }
@@ -78,7 +80,9 @@ function ifup(iface, cb){
  * Bring down interface
  */
 function ifdown(iface, cb){
+	console.log('bringing down interface: ' + iface);
 	exec('ifdown ' + iface, function(error, stdout, stderr){
+		console.log(stdout);
 		cb(error);
 	});
 }
@@ -112,7 +116,9 @@ function renewDHCP(iface, cb){
 		throw "Invalid interface";
 	}
 	var cmd = "/sbin/dhclient " + iface;
+	console.log('renewing dhcp lease on: ' + iface);
 	exec(cmd, function(error, stdout, stderr){
+		console.log(stdout);
 		cb(error);
 	});
 }
