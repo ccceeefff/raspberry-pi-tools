@@ -72,6 +72,10 @@ function verifyServices(enable, callback){
 							})
 						}
 					} else {
+
+						return next();
+						// do not stop hostapd
+
 						if(running){
 							hostapd.stop(function(error){
 								next(error);
