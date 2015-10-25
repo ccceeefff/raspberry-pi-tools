@@ -18,32 +18,27 @@
  *			- turn on hostapd and dnsmasq
  */
 
-var os = require('os');
 
 var interfaces = require('./interfaces');
+var hostapd = require('./hostapd');
+var dnsmasq = require('./dnsmasq');
 
-function getIPAddres(interfaceName){
-	var ifaces = os.networkInterfaces();
-	var ipAddress = "";
-	console.log(JSON.stringify(ifaces, null, 2)); 
-	ifaces[interfaceName].forEach(function(iface){
-		if('IPv4' !== iface.family || iface.internal !== false){
-			return;
-		}
-		ipAddress = iface.address;
-	});
-	return ipAddress;
-}
+let ifaceName = "wlan0";
+let staticIP = "192.168.100.1"; 
 
+interfaces.ifconfig(ifaceName, function(error, ifaces){
+	if(error){
+		console.log("Unable to get interfaces: " + error);
+		return;
+	}
 
-
+	var iface = ifaces[ifaceName];
+	if(iface){
+		console.log("interface ip: " + iface['ip_addr']);
+		console.log("interface running: " + iface['running']);
+	} else {
+		console.log("Interface not found...");
+	}
+});
 
 /*** MAIN ***/
-
-var ifaceName = "wlan0";
-
-// console.log("wlan0 current ip: " + getIPAddres(ifaceName));
-interfaces.ifconfig(null, function(error, ifaces){
-	console.log("error: " + error);
-	console.log("ifaces: " + JSON.stringify(ifaces, null, 2));
-});
