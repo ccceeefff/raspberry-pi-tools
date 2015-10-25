@@ -21,6 +21,11 @@ function parseBlock(block, fields){
 			output[key] == null;
 		}
 	}
+
+	// check if interface is running
+	var running = block.search('RUNNING') != -1;
+	output["running"] = running; 
+
 	return output;
 }
 
@@ -77,8 +82,44 @@ function ifdown(iface, cb){
 	});
 }
 
+/**
+ * Sets the ip address and netmask of an interface
+ */
+function configureInterface(iface, ipAddress, netmask, cb){
+	if(iface === null || iface.length == 0){
+		throw "Invalid interface";
+	}
+	// TODO: need validation of ip
+	if(ipAddress === null || ipAddress.length == 0){
+		throw "Invalid IP Address";
+	}
+	var cmd = "ifconfig " + iface + " " + ipAddress;
+	// TODO: need validation of netmask
+	if(netmask !== null && netmask.length > 0){
+		cmd += " netmask " + netmask;
+	}
+	exec(cmd, function(error, stdout, stderr){
+		cb(error);
+	});
+}
+
+/**
+ * Try to renew dhcp lease of interface
+ */
+function renewDHCP(iface, cb){
+	if(iface === null || iface.length == 0){
+		throw "Invalid interface";
+	}
+	var cmd = "/sbin/dhclient " + iface;
+	exec(cmd, function(error, stdout, stderr){
+		cb(error);
+	});
+}
+
 module.exports = {
 	ifconfig: ifconfig,
 	ifup: ifup,
-	ifdown: ifdown
+	ifdown: ifdown,
+	configureInterface: configureInterface,
+	renewDHCP: renewDHCP
 };
