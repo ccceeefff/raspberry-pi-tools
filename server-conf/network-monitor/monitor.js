@@ -186,6 +186,9 @@ function runQuery(){
 }
 
 //setInterval(function(){
-	runQuery();
+//	runQuery();
 //}, 60000);
 
+module.exports = {
+	runQuery: runQuery
+};
