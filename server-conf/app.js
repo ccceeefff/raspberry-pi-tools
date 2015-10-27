@@ -2,6 +2,7 @@ var express    = require("express");
 var bodyParser = require('body-parser');
 
 var networkMonitor = require('./network-monitor');
+var networkConfigure = require('./network-configure');
 
 var app = express();
 app.use(bodyParser.json());
@@ -10,6 +11,16 @@ app.use(bodyParser.json());
 app.get("/api/enable_wifi", function(request, response){
 	console.log("incoming request..");
 	response.end("world");
+});
+
+app.get("/api/wifi", function(request, response){
+	networkConfigure.iw.scan('wlan0', function(error, results){
+		if(error){
+			response.status(500).send(error);
+		} else {
+			response.json(results);
+		}
+	});
 });
 
 // Listen on our server
