@@ -72,6 +72,10 @@ function verifyServices(enable, callback){
 							})
 						}
 					} else {
+
+						return next();
+						// do not stop hostapd
+
 						if(running){
 							hostapd.stop(function(error){
 								next(error);
@@ -182,6 +186,9 @@ function runQuery(){
 }
 
 //setInterval(function(){
-	runQuery();
+//	runQuery();
 //}, 60000);
 
+module.exports = {
+	runQuery: runQuery
+};
