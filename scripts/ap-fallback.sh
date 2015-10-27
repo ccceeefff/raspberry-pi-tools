@@ -25,8 +25,15 @@ if [[ $IP -eq 0 ]]; then
 		echo "Setting IP Address for wlan0"
 		/sbin/ifconfig wlan0 $HostAPDIP netmask 255.255.255.0 up
 	fi
+# bash =~ operator is a regex matcher
 elif [[ $IP -eq 1 && $NetworkUp =~ $HostAPDIP ]]; then
 	echo "IP is $HostAPDIP - hostapd is running"
+	# at certain intervals, we need to check if the known SSID is back up again
+	# do a scan while in AP mode and check if SSID is available
+	# if it is, try restarting the interface.
+	# if we are able to reconnect (i.e. has valid IP address and can ping server)
+	# take down hostapd and dnsmasq
+	# if not, re-establish static IP address
 else
 	echo "Connection is up"
 	hostapd=`pidof hostapd`
