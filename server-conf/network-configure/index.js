@@ -1,3 +1,4 @@
 module.exports = {
-	iw: require('./iw')
+	iw: require('./iw'),
+	wifiManager: require('./wifi')
 };
