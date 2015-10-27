@@ -1,4 +1,10 @@
 var iw = require('./iw');
 
 console.log("Scanning for APs: ");
-console.log(JSON.stringify(iw.scan('wlan0'), null, 2);
+iw.scan('wlan0', function(error, results){
+	if(error){
+		console.log("failed: " + error);
+		return;
+	}
+	console.log(JSON.stringify(results, null, 2));
+});

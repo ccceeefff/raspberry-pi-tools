@@ -4,7 +4,7 @@
 
 var exec = require('child_process').exec;
 
-var IW_COMMAND = "./iw";  // this has to reside somewhere
+var IW_COMMAND = "/home/pi/tools/iw-4.3/iw";  // this has to reside somewhere
 var SCAN_BLOCK_START = "BSS";
 
 var bss_fields = {
@@ -13,13 +13,14 @@ var bss_fields = {
 	"signal_strength": /signal:\s([^\s]+)/,
 	"beacon_interval": /beacon interval:\s([^\s]+)/,
 	"last_seen": /last seen:\s([^\s]+)/,
-	"channel": /DS Parameter set:\s([^\s]+)/
+	"channel": /DS Parameter set: channel\s([^\s]+)/,
+	"mac_addr": /BSS\s([^\s]+)\(/ 
 };
 
 function parseBlock(block, fields){
 var output = {};
-	for(var key in ifconfig_fields){
-		var re = block.match(ifconfig_fields[key]);
+	for(var key in fields){
+		var re = block.match(fields[key]);
 		if(re && re.length > 1){
 			output[key] = re[1];
 		} else {
@@ -35,9 +36,9 @@ function parse(output){
 	var blocks = [];
 	var block = null
 	lines.forEach(function(line){
-		if(line.startsWith(SCAN_BLOCK_START)){
+		if(line.indexOf(SCAN_BLOCK_START) === 0){
 			if(block != null){
-				blocks.append(parseBlock(block, bss_fields));
+				blocks.push(parseBlock(block, bss_fields));
 			}
 			block = "";
 		}
@@ -45,7 +46,7 @@ function parse(output){
 	});
 
 	if(block != null){
-		blocks.append(parseBlock(block, bss_fields));
+		blocks.push(parseBlock(block, bss_fields));
 	}
 
 	return blocks;
