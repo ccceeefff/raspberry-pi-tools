@@ -57,7 +57,7 @@ function scan(ifaceName, cb){
 		throw "Interface name cannot be null";
 	}
 
-	var cmd = "sudo " + IW_COMMAND + " dev " + ifaceName + " scan ap-force";
+	var cmd = IW_COMMAND + " dev " + ifaceName + " scan ap-force";
 	exec(cmd, function(error, stdout, stderr){
 		if(error){
 			return cb(error);
