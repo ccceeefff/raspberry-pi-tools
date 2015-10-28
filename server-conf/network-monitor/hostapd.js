@@ -17,18 +17,21 @@ function isRunning(cb) {
 }
 
 function start(cb){
+	console.log('starting hostapd');
 	exec('/etc/init.d/hostapd start', function(error, stdout, stderr){
 		cb(error);
 	});
 }
 
 function stop(cb){
+	console.log('stopping hostapd');
 	exec('/etc/init.d/hostapd stop', function(error, stdout, stderr){
 		cb(error);
 	});
 }
 
 function restart(cb){
+	console.log('restarting hostapd');
 	exec('/etc/init.d/hostapd restart', function(error, stdout, stderr){
 		cb(error);
 	});

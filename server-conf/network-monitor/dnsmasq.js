@@ -17,18 +17,21 @@ function isRunning(cb) {
 }
 
 function start(cb){
+	console.log('starting dnsmasq');
 	exec('/etc/init.d/dnsmasq start', function(error, stdout, stderr){
 		cb(error);
 	});
 }
 
 function stop(cb){
+	console.log('stopping dnsmasq');
 	exec('/etc/init.d/dnsmasq stop', function(error, stdout, stderr){
 		cb(error);
 	});
 }
 
 function restart(cb){
+	console.log('restarting dnsmasq');
 	exec('/etc/init.d/dnsmasq restart', function(error, stdout, stderr){
 		cb(error);
 	});

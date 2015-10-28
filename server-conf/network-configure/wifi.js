@@ -51,7 +51,7 @@ function rebootInterface(iface, cb){
 	if(iface === null || iface.length == 0){
 		throw "Interface cannot be null";
 	}
-	var cmd = "ifdown " + iface + "; ifup " + iface + ";";
+	var cmd = "sudo ifdown " + iface + "; sudo ifup " + iface + ";";
 	logExec(cmd, function(error){
 		cb(error);
 	});
@@ -69,7 +69,8 @@ function setupClientMode(iface, templateFile, context, cb){
 			},
 			// try to register
 			function(next){
-				testNetworkConnection(iface, next);
+				next();
+				//testNetworkConnection(iface, next);
 			}
 		], function(error){
 			if(error){
