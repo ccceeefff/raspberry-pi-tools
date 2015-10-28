@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var networkMonitor = require('./network-monitor');
 var networkConfigure = require('./network-configure');
 
+var async = require('async');
+
 var app = express();
 app.use(bodyParser.json());
 
@@ -27,19 +29,36 @@ app.post("/api/wifi/configure", function(request, response){
 	if(ssid != null && ssid.length > 0){
 		var msg = "";
 		runningConfigureScripts = true;
-		if(pass != null && pass.length > 0){
-			msg = "Setting up gateway WiFi with WPA";
-			networkConfigure.wifiManager.setupWPA('wlan0', ssid, pass, function(error){
+
+		// disable hostapd and dnsmasq before starting
+		async.waterfall([
+				//disable hostapd
+				function(next){
+					networkMonitor.hostapd.stop(next);
+				},
+				function(next){
+					networkMonitor.dnsmasq.stop(next);
+				},
+				function(next){
+					if(pass != null && pass.length > 0){
+						msg = "Setting up gateway WiFi with WPA";
+						networkConfigure.wifiManager.setupWPA('wlan0', ssid, pass, next);
+					} else {
+						msg = "Setting up gateway WiFi with ESSID";
+						networkConfigure.wifiManager.setupESSID('wlan0', ssid, next);
+					}
+				}
+			],
+			function(error){
+				if(error){
+					console.log("Error configuring wifi: " + error);
+				} else {
+					console.log("Configrued wifi... Verifying...");
+				}
 				networkMonitor.run();
 				runningConfigureScripts = false;
 			});
-		} else {
-			msg = "Setting up gateway WiFi with ESSID";
-			networkConfigure.wifiManager.setupESSID('wlan0', ssid, function(error){
-				networkMonitor.run();
-				runningConfigureScripts = false;
-			});
-		}
+
 		response.json({
 			msg: msg,
 			ssid: ssid,
