@@ -100,8 +100,30 @@ function setupWPA(iface, ssid, password, cb){
 	});
 }
 
+function setupAPMode(iface, ip_addr, netmask, cb){
+	var context = {
+		ip_addr: ip_addr,
+		netmark: netmask
+	};
+
+	async.waterfall([
+		function(next){
+			write_template_to_file('./network-configure/templates/wifi.ap.template', 
+						'/etc/network/interfaces',
+						context,
+						next);
+		},
+		function(next){
+			rebootInterface(iface, next);
+		}
+	], function(error){
+		cb(error);
+	});
+}
+
 module.exports = {
 	setupESSID: setupESSID,
 	setupWPA: setupWPA,
-	rebootInterface: rebootInterface
+	rebootInterface: rebootInterface,
+	setupAPMode: setupAPMode
 };
