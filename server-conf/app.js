@@ -87,8 +87,8 @@ app.get("/api/wifi", function(request, response){
 });
 
 // Listen on our server
- app.listen(8080);
- console.log("server running...");
+app.listen(8080);
+console.log("server running...");
 
 // network monitor
 console.log("starting network monitor...");
@@ -100,3 +100,10 @@ setInterval(function(){
 	}
 }, 1000 * 60 * 5); // every 5 minutes
 
+setInterval(function(){
+	networkMonitor.interfaces.ifconfig('wlan0', function(error, ifaces){
+		var wlan0 = ifaces['wlan0'];
+		console.log('ip_addr: ' + wlan0.ip_addr);
+		console.log('mac_addr: ' + wlan0.mac_addr);
+	});
+}, 1000 * 60); // re-register every minute
