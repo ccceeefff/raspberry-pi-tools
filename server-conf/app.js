@@ -13,6 +13,8 @@ app.get("/ping", function(request, response){
 	response.end("Hello, world!");
 });
 
+var runningConfigureScripts = false;
+
 app.post("/api/wifi/configure", function(request, response){
 	// we need 2 things
 	// 1. What the SSID is
@@ -24,15 +26,18 @@ app.post("/api/wifi/configure", function(request, response){
 
 	if(ssid != null && ssid.length > 0){
 		var msg = "";
+		runningConfigureScripts = true;
 		if(pass != null && pass.length > 0){
 			msg = "Setting up gateway WiFi with WPA";
 			networkConfigure.wifiManager.setupWPA('wlan0', ssid, pass, function(error){
 				networkMonitor.run();
+				runningConfigureScripts = false;
 			});
 		} else {
 			msg = "Setting up gateway WiFi with ESSID";
 			networkConfigure.wifiManager.setupESSID('wlan0', ssid, function(error){
 				networkMonitor.run();
+				runningConfigureScripts = false;
 			});
 		}
 		response.json({
@@ -65,6 +70,9 @@ app.get("/api/wifi", function(request, response){
 console.log("starting network monitor...");
 networkMonitor.run();
 setInterval(function(){
-	networkMonitor.run();
+	// dont run network monitor if we're undergoing a configuration request
+	if(!runningConfigureScripts){
+		networkMonitor.run();
+	}
 }, 1000 * 60 * 5); // every 5 minutes
 
