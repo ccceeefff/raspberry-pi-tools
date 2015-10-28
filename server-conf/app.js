@@ -28,6 +28,13 @@ app.post("/api/wifi/configure", function(request, response){
 
 	if(ssid != null && ssid.length > 0){
 		var msg = "";
+
+		if(pass != null && pass.length > 0){
+			msg = "Setting up gateway WiFi with WPA";
+		} else {
+			msg = "Setting up gateway WiFi with ESSID";
+		}
+
 		runningConfigureScripts = true;
 
 		// disable hostapd and dnsmasq before starting
@@ -41,10 +48,8 @@ app.post("/api/wifi/configure", function(request, response){
 				},
 				function(next){
 					if(pass != null && pass.length > 0){
-						msg = "Setting up gateway WiFi with WPA";
 						networkConfigure.wifiManager.setupWPA('wlan0', ssid, pass, next);
 					} else {
-						msg = "Setting up gateway WiFi with ESSID";
 						networkConfigure.wifiManager.setupESSID('wlan0', ssid, next);
 					}
 				}
