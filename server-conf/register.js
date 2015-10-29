@@ -1,23 +1,22 @@
 var http = require('http');
 
-var HOST = "";
-var PORT = 80;
+var HOST = "10.0.16.130";
+var PORT = 8080;
 
 function register(ip_addr, mac_addr){
     var options = {
         hostname: HOST,
         port: PORT, 
-        path: '/midi/register',
+        path: '/register',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         }
     };
     var data = {
-    	'ip_addr' : ip_addr,
-    	'mac_addr' : mac_addr
+    	'ip' : ip_addr,
+    	'mac' : mac_addr
     };
-    var params = this.getIPAddress() + ":" + this.port;
     var req = http.request(options, function(res){
         console.log('[NetworkManager] STATUS: ' + res.statusCode);
         console.log('[NetworkManager] HEADERS: ' + JSON.stringify(res.headers));
@@ -29,6 +28,7 @@ function register(ip_addr, mac_addr){
     req.on("error", function(e){
         console.log("[NetworkManager] Error with registration: " + e);  
     })
+	console.log('sending data: ' + JSON.stringify(data));
     req.write(JSON.stringify(data));
     req.end();
 };

@@ -5,7 +5,7 @@ var networkMonitor = require('./network-monitor');
 var networkConfigure = require('./network-configure');
 
 var async = require('async');
-
+var register = require('./register');
 var app = express();
 app.use(bodyParser.json());
 
@@ -105,5 +105,6 @@ setInterval(function(){
 		var wlan0 = ifaces['wlan0'];
 		console.log('ip_addr: ' + wlan0.ip_addr);
 		console.log('mac_addr: ' + wlan0.mac_addr);
+		register.register(wlan0.ip_addr, wlan0.mac_addr);
 	});
-}, 1000 * 60); // re-register every minute
+}, 1000 * 10); // re-register every minute
