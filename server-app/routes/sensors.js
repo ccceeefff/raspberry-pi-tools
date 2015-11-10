@@ -1,29 +1,34 @@
 var express = require('express');
 var router = express.Router();
+var sensors  = require('../models').Sensor;
+var records = require('../models').Record;
 
 router.param('id', function(req, res, next, id){
-	req.sensorId = id;
+	req.nodeId = id;
 	next();
 });
 
 router.get('/', function(req, res, next){
 	// return all sensors
-	res.json([]);
+	sensors.all().then(function(results){
+		res.json(results);
+	});
 });
 
 router.get('/:id', function(req, res, next){
-	var sensor = {
-		id: req.sensorId
-	};
-	res.json(sensor);
+	sensors.findOne({where: {nodeId: req.nodeId}}).then(function(sensor){
+		if(sensor != null){
+			res.json(sensor);
+		} else {
+			res.status(404).json({error: "Sensor not found"});
+		}
+	});
 });
 
 router.get('/:id/historical', function(req, res, next){
-	var results = {
-		id: req.sensorId,
-		records: []
-	};
-	res.json(results);
+	records.findAll({where: {nodeId: req.nodeId}}).then(function(results){
+		res.json(results);
+	});
 });
 
 module.exports = router;
