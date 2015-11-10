@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var models  = require('../models');
+var model  = require('../models');
 
 var validator = require('validator');
 
@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
  */
 
 function getSettings(next){
-	model.Settings.findOrCreate({where: {id: 1}, defaults: {
+	model.Setting.findOrCreate({where: {id: 1}, defaults: {
 		name: "",
 		cloud_server_address: "",
 		poll_interval: 0,
@@ -40,23 +40,23 @@ function getSettings(next){
 
 function verify_data(data, next){
 	var errorStr = null;
-	if(validator.isNull(data)){
-		errorStr = "Submission contains no data";
-	} else if(validator.isNull(data.name)){
-		errorStr = "Invalid name";
-	} else if(validator.isNull(data.cloud_server_address)){
-		errorStr = "Invalid server address";
-	} else if(!validator.isInt(data.submission_interval)){
-		errorStr = "Invalid submission interval";
-	} else if(!validator.isInt(data.poll_interval)){
-		errorStr = "Invalid poll interval";
-	} else if(validator.isNull(data.location)){
-		errorStr = "Invalid location";
-	} else if(!validator.isNumeric(data.location.lat)){
-		errorStr = "Invalid location latitude";
-	} else if(!validator.isNumeric(data.location.long)){
-		errorStr = "Invalid location longitude";
-	}
+	// if(validator.isNull(data)){
+	// 	errorStr = "Submission contains no data";
+	// } else if(validator.isNull(data.name)){
+	// 	errorStr = "Invalid name";
+	// } else if(validator.isNull(data.cloud_server_address)){
+	// 	errorStr = "Invalid server address";
+	// } else if(!validator.isInt(data.submission_interval)){
+	// 	errorStr = "Invalid submission interval";
+	// } else if(!validator.isInt(data.poll_interval)){
+	// 	errorStr = "Invalid poll interval";
+	// } else if(validator.isNull(data.location)){
+	// 	errorStr = "Invalid location";
+	// } else if(!validator.isNumeric(data.location.lat)){
+	// 	errorStr = "Invalid location latitude";
+	// } else if(!validator.isNumeric(data.location.long)){
+	// 	errorStr = "Invalid location longitude";
+	// }
 	console.log("error: " + errorStr);
 	if(errorStr !== null){
 		next(new Error(errorStr));
@@ -69,7 +69,7 @@ function verify_data(data, next){
 router.get('/', function(req, res, next) {
 	getSettings(function(settings){
 		res.json(settings);	
-	})d
+	});
 });
 
 router.post('/', function(req, res, next){
@@ -78,14 +78,16 @@ router.post('/', function(req, res, next){
 		if(error){
 			res.status(400).json({error: error.message});
 		} else {
-			settings.name = req.body.name;
-			settings.cloud_server_address = req.body.cloud_server_address;
-			settings.poll_interval = req.body.poll_interval;
-			settings.submission_interval = req.body.submission_interval;
-			settings.location.lat = req.body.location.lat;
-			settings.location.long = req.body.location.long;
-			settings.updated_at = Math.floor(new Date() / 1000);
-			res.json(settings);
+			getSettings(function(settings){
+				settings.name = req.body.name;
+				settings.cloud_server_address = req.body.cloud_server_address;
+				settings.poll_interval = req.body.poll_interval;
+				settings.submission_interval = req.body.submission_interval;
+				settings.locLat = req.body.location.lat;
+				settings.locLong = req.body.location.long;
+				settings.save();
+				res.json(settings);
+			});
 		}
 	});
 });
