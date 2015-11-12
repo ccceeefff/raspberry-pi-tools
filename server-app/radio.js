@@ -32,6 +32,7 @@ function processSensorData(sensorData, remoteAddress) {
     model.Sensor.findOne({where: {address: record.address}}).then(function(sensor){
       sensor.lastValue = distance;
       sensor.lastTransmission = record.createdAt;
+      sensor.save();
     });
 
   });
