@@ -36,6 +36,7 @@ app.get('/api/v1/get', (req, res) => {
 
 app.post('/api/v1/reset', (req, res) => {
   memstore.clear()
+  res.send('OK')
 })
 
 app.post('/api/v1/submit', (req, res) => {
