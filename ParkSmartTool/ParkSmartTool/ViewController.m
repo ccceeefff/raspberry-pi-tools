@@ -10,10 +10,14 @@
 
 #import "GatewaySettingsViewController.h"
 
+#import <CoreLocation/CoreLocation.h>
+
 @interface ViewController ()
 
 @property (nonatomic, weak) IBOutlet UITextField *hostField;
 @property (nonatomic, weak) IBOutlet UITextField *portField;
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
 
 - (IBAction)connect:(id)sender;
 
@@ -24,6 +28,21 @@
 @end
 
 @implementation ViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.locationManager = [CLLocationManager new];
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    switch (status) {
+        case kCLAuthorizationStatusAuthorizedAlways:
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            break;
+        default:
+            [self.locationManager requestWhenInUseAuthorization];
+            break;
+    }
+}
 
 - (void)connect:(id)sender
 {
@@ -48,7 +67,7 @@
 - (void)connectToServer:(NSString *)server withPort:(NSInteger)port
 {
     // try to ping server, if its valid, then we can connect to it
-    NSString *urlString = [NSString stringWithFormat:@"http://%@:%ld/api/v1/settings", server, port];
+    NSString *urlString = [NSString stringWithFormat:@"http://%@:%ld/api/v1/settings", server, (long)port];
     [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:urlString]
                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                     
