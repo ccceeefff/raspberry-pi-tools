@@ -10,18 +10,69 @@
 
 @interface ViewController ()
 
+@property (nonatomic, weak) IBOutlet UITextField *hostField;
+@property (nonatomic, weak) IBOutlet UITextField *portField;
+
+- (IBAction)connect:(id)sender;
+
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+- (void)connect:(id)sender
+{
+    // validate fields
+    NSString *host = self.hostField.text;
+    NSString *port = self.portField.text;
+    
+    if(host.length == 0 || port.length == 0){
+        [self displayError:@"Host and Port must be valid"];
+        return;
+    }
+    
+    NSInteger thePort = [port integerValue];
+    if(thePort < 0 || thePort > 65535){
+        [self displayError:@"Port must be valid"];
+        return;
+    }
+    
+    [self connectToServer:host withPort:thePort];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)connectToServer:(NSString *)server withPort:(NSInteger)port
+{
+    // try to ping server, if its valid, then we can connect to it
+    NSString *urlString = [NSString stringWithFormat:@"http://%@:%ld/api/v1/settings", server, port];
+    [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:urlString]
+                                completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                                    
+                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                    
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        if(httpResponse.statusCode == 200){
+                                            NSDictionary *settings = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+                                            [self configureServer:server withPort:port andSettings:settings];
+                                        } else {
+                                            [self displayError:@"Cannot connect to gateway"];
+                                        }
+                                    });
+                                }] resume];
+}
+
+- (void)configureServer:(NSString *)server withPort:(NSInteger)port andSettings:(NSDictionary *)settings
+{
+    NSLog(@"settings: %@", settings);
+}
+
+- (void)displayError:(NSString *)error
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                   message:error
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK"
+                                              style:UIAlertActionStyleCancel
+                                            handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

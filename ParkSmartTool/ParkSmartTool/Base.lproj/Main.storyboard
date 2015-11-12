@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X8Q-Hj-bLp">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--ParkSmart-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController title="ParkSmart" id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +17,91 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect to a ParkSmart Gateway" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSP-wI-BWr">
+                                <rect key="frame" x="20" y="84" width="253.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ao4-mQ-wbB">
+                                <rect key="frame" x="71" y="121" width="489" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ik7-98-f8c">
+                                <rect key="frame" x="20" y="124.5" width="41" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Port:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btO-6a-0QF">
+                                <rect key="frame" x="20" y="165" width="37" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GrB-fL-cR3">
+                                <rect key="frame" x="71" y="161.5" width="489" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ao4-mQ-wbB" secondAttribute="trailing" constant="20" id="299-V2-W5j"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="JSP-wI-BWr" secondAttribute="leading" id="6m3-zC-7sa"/>
+                            <constraint firstItem="btO-6a-0QF" firstAttribute="leading" secondItem="Ik7-98-f8c" secondAttribute="leading" id="7mH-7N-Nqu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GrB-fL-cR3" secondAttribute="trailing" constant="20" id="Cic-Iy-17u"/>
+                            <constraint firstItem="Ao4-mQ-wbB" firstAttribute="baseline" secondItem="Ik7-98-f8c" secondAttribute="baseline" id="Ekk-TF-ZT6"/>
+                            <constraint firstItem="Ao4-mQ-wbB" firstAttribute="leading" secondItem="Ik7-98-f8c" secondAttribute="trailing" constant="10" id="H8I-1W-Yn7"/>
+                            <constraint firstItem="JSP-wI-BWr" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Lft-Ao-4zQ"/>
+                            <constraint firstItem="GrB-fL-cR3" firstAttribute="leading" secondItem="btO-6a-0QF" secondAttribute="trailing" constant="10" id="NfY-Np-wUi"/>
+                            <constraint firstItem="btO-6a-0QF" firstAttribute="top" secondItem="Ik7-98-f8c" secondAttribute="bottom" constant="20" id="S6d-1Y-LCy"/>
+                            <constraint firstItem="Ik7-98-f8c" firstAttribute="top" secondItem="JSP-wI-BWr" secondAttribute="bottom" constant="20" id="fp1-ca-VLE"/>
+                            <constraint firstItem="GrB-fL-cR3" firstAttribute="leading" secondItem="Ao4-mQ-wbB" secondAttribute="leading" id="mOw-0n-PFf"/>
+                            <constraint firstItem="Ik7-98-f8c" firstAttribute="leading" secondItem="JSP-wI-BWr" secondAttribute="leading" id="pV5-4Z-yxs"/>
+                            <constraint firstItem="GrB-fL-cR3" firstAttribute="baseline" secondItem="btO-6a-0QF" secondAttribute="baseline" id="yxz-tH-6D4"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="NfY-Np-wUi"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="ckr-87-9i9">
+                        <barButtonItem key="rightBarButtonItem" title="Connect" id="LZp-zz-Nz5">
+                            <connections>
+                                <action selector="connect:" destination="BYZ-38-t0r" id="aQN-48-1Ye"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="hostField" destination="Ao4-mQ-wbB" id="qFr-xQ-d81"/>
+                        <outlet property="portField" destination="GrB-fL-cR3" id="21d-bU-0sx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1013" y="-317"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ySV-lS-Hif">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="X8Q-Hj-bLp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BzL-4b-88u">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="iB6-3G-MQF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAT-yF-9zr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="214" y="-317"/>
         </scene>
     </scenes>
 </document>
