@@ -22,6 +22,8 @@ function Uploader(){
 Uploader.prototype.run = function(){
 	var self = this;
 	getSettings(function(settings){
+		setTimeout(self.run, settings.submission_interval * 1000);
+
 		Record.findAll({where : {submitted: 0}}).then(function(records){
 			self.submit(settings, records, function(error){
 				if(error === null){
@@ -35,13 +37,13 @@ Uploader.prototype.run = function(){
 	});
 };
 
-/** 
+/**
  * Uploads an array of items to the cloud server
  */
 Uploader.prototype.submit = function(gatewayInfo, items, next){
 	var options = {
         hostname: gatewayInfo.cloud_server_address,
-        port: gatewayInfo.cloud_server_port, 
+        port: gatewayInfo.cloud_server_port,
         path: '/api/v1/submit',
         method: 'POST',
         headers: {
@@ -58,7 +60,7 @@ Uploader.prototype.submit = function(gatewayInfo, items, next){
     	};
     	entries.push(entry);
     });
-    
+
     var data = {
     	gatewayId: gatewayInfo.name,
     	locLat: gatewayInfo.locLat,
@@ -76,7 +78,7 @@ Uploader.prototype.submit = function(gatewayInfo, items, next){
         });
     });
     req.on("error", function(e){
-        console.log("[Uploader] Error with submission: " + e);  
+        console.log("[Uploader] Error with submission: " + e);
         next(e);
     })
     req.write(JSON.stringify(data));

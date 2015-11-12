@@ -45,9 +45,7 @@ var server = app.listen(app.get('port'), function() {
   var port = server.address().port;
 
   var uploader = new Uploader();
-  setInterval(function(){
-  	uploader.run();
-  }, 5000);
+	uploader.run();
 
   console.log('Server is running at http://' + host + ':' + port);
 })
