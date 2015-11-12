@@ -70,7 +70,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="ckr-87-9i9">
+                    <navigationItem key="navigationItem" title="ParkSmart" id="ckr-87-9i9">
                         <barButtonItem key="rightBarButtonItem" title="Connect" id="LZp-zz-Nz5">
                             <connections>
                                 <action selector="connect:" destination="BYZ-38-t0r" id="aQN-48-1Ye"/>
