@@ -22,7 +22,7 @@ void setup() {
 
   radio.begin();
   radio.setPALevel(RF24_PA_MAX);
-
+  
   if (radio.setDataRate(RF24_1MBPS)) {
     Serial.println("Data rate set");
   } else {
@@ -37,10 +37,10 @@ void setup() {
   //radio.setPayloadSize(PACKET_SIZE);
 
   assignRandomLocalAddress();
-
+  
   radio.openWritingPipe(gatewayAddress);
   radio.openReadingPipe(1, localAddress);
-
+  
   radio.startListening();
 
   sendJoinRequest();
@@ -48,7 +48,7 @@ void setup() {
 
 void assignRandomLocalAddress() {
   randomSeed(analogRead(0));
-
+  
   localAddress =  ((uint64_t)random(128, 255) << 32)
                       | ((uint64_t)random(128, 255) << 24)
                       | ((uint64_t)random(128, 255) << 16)
@@ -63,12 +63,13 @@ void sendSensorData() {
 
   if (distance == lastDistance) {
     Serial.println("Distance did not change. Skipping sending part.");
+    return;
   }
 
   lastDistance = distance;
 
   radio.stopListening();
-
+    
   uint8_t data_packet[] = {
     0x01,
     (distance >> 8) & 0xFF,
@@ -79,11 +80,11 @@ void sendSensorData() {
     (localAddress >> 8) & 0xFF,
     localAddress & 0xFF
   };
-
+  
   if (!radio.write(data_packet, sizeof(data_packet))) {
     Serial.println(F("Sending failed."));
   }
-
+  
   radio.startListening();
 }
 
@@ -92,9 +93,9 @@ void sendJoinRequest() {
     Serial.println(F("Carrier detected. Someone is using the line."));
   } else {
     Serial.println(F("Line clear. Now sending..."));
-
+    
     radio.stopListening();
-
+    
     uint8_t join_packet[] = {
       0x00,
       (localAddress >> 32) & 0xFF,
@@ -103,23 +104,23 @@ void sendJoinRequest() {
       (localAddress >> 8) & 0xFF,
       localAddress & 0xFF
     };
-
+    
     if (!radio.write(join_packet, sizeof(join_packet))) {
       Serial.println(F("Sending failed."));
     }
-
+    
     radio.startListening();
 
     uint32_t started_waiting_at = micros();
     boolean timeout = false;
-
+    
     while (!radio.available()) {
       if (micros() - started_waiting_at > 1000000) {
         timeout = true;
         break;
       }
     }
-
+    
     if (timeout) {
       Serial.println(F("Failed to get response in time."));
     } else {
@@ -141,7 +142,7 @@ void sendJoinRequest() {
 
 void loop() {
   //while (Serial.read() == -1);
-
+  
   sendSensorData();
   delay(interval * 100);
 }
