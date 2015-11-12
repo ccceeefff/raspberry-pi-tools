@@ -8,6 +8,7 @@ function getSettings(next){
 	model.Setting.findOrCreate({where: {id: 1}, defaults: {
 		name: '',
 		cloud_server_address: '',
+		cloud_server_port: 80,
 		poll_interval: 0,
 		submission_interval: 0,
 		locLat: 0.0,
@@ -59,6 +60,7 @@ router.post('/', function(req, res, next){
 			getSettings(function(settings){
 				settings.name = req.body.name;
 				settings.cloud_server_address = req.body.cloud_server_address;
+				settings.cloud_server_port = validator.toInt(req.body.cloud_server_port);
 				settings.poll_interval = validator.toInt(req.body.poll_interval);
 				settings.submission_interval = validator.toInt(req.body.submission_interval);
 				settings.locLat = validator.toFloat(req.body.locLat);
