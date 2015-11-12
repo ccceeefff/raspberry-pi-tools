@@ -11,6 +11,8 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+#import "SensorTableViewController.h"
+
 @interface GatewaySettingsViewController () <MKMapViewDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextField *nameField;
@@ -112,6 +114,16 @@
                                               style:UIAlertActionStyleCancel
                                             handler:nil]];
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UIViewController *aVC = [segue destinationViewController];
+    if([aVC isKindOfClass:[SensorTableViewController class]]){
+        SensorTableViewController *vc = (SensorTableViewController *)aVC;
+        vc.server = self.server;
+        vc.port = self.port;
+    }
 }
 
 @end

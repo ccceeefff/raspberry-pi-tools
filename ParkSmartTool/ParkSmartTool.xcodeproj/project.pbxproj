@@ -18,6 +18,9 @@
 		969689FB1BF446810062640D /* GatewaySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689FA1BF446810062640D /* GatewaySettingsViewController.m */; };
 		969689FE1BF44A010062640D /* FieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689FD1BF44A010062640D /* FieldTableViewCell.m */; };
 		96968A001BF44EB40062640D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969689FF1BF44EB40062640D /* MapKit.framework */; };
+		96968A031BF45CA70062640D /* SensorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96968A021BF45CA70062640D /* SensorTableViewCell.m */; };
+		96968A061BF45D050062640D /* SensorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96968A051BF45D050062640D /* SensorTableViewController.m */; };
+		96968A091BF45FB70062640D /* SensorDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96968A081BF45FB70062640D /* SensorDataTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,12 @@
 		969689FC1BF44A010062640D /* FieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldTableViewCell.h; sourceTree = "<group>"; };
 		969689FD1BF44A010062640D /* FieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldTableViewCell.m; sourceTree = "<group>"; };
 		969689FF1BF44EB40062640D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		96968A011BF45CA70062640D /* SensorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTableViewCell.h; sourceTree = "<group>"; };
+		96968A021BF45CA70062640D /* SensorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableViewCell.m; sourceTree = "<group>"; };
+		96968A041BF45D050062640D /* SensorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTableViewController.h; sourceTree = "<group>"; };
+		96968A051BF45D050062640D /* SensorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableViewController.m; sourceTree = "<group>"; };
+		96968A071BF45FB70062640D /* SensorDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorDataTableViewController.h; sourceTree = "<group>"; };
+		96968A081BF45FB70062640D /* SensorDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorDataTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +133,12 @@
 				969689FA1BF446810062640D /* GatewaySettingsViewController.m */,
 				969689FC1BF44A010062640D /* FieldTableViewCell.h */,
 				969689FD1BF44A010062640D /* FieldTableViewCell.m */,
+				96968A011BF45CA70062640D /* SensorTableViewCell.h */,
+				96968A021BF45CA70062640D /* SensorTableViewCell.m */,
+				96968A041BF45D050062640D /* SensorTableViewController.h */,
+				96968A051BF45D050062640D /* SensorTableViewController.m */,
+				96968A071BF45FB70062640D /* SensorDataTableViewController.h */,
+				96968A081BF45FB70062640D /* SensorDataTableViewController.m */,
 			);
 			path = ParkSmartTool;
 			sourceTree = "<group>";
@@ -292,8 +307,11 @@
 				969689FB1BF446810062640D /* GatewaySettingsViewController.m in Sources */,
 				969689CE1BF440600062640D /* ViewController.m in Sources */,
 				969689FE1BF44A010062640D /* FieldTableViewCell.m in Sources */,
+				96968A031BF45CA70062640D /* SensorTableViewCell.m in Sources */,
 				969689CB1BF440600062640D /* AppDelegate.m in Sources */,
+				96968A091BF45FB70062640D /* SensorDataTableViewController.m in Sources */,
 				969689C81BF440600062640D /* main.m in Sources */,
+				96968A061BF45D050062640D /* SensorTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +537,7 @@
 				969689F21BF440600062640D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		969689F31BF440600062640D /* Build configuration list for PBXNativeTarget "ParkSmartToolTests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +546,7 @@
 				969689F51BF440600062640D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		969689F61BF440600062640D /* Build configuration list for PBXNativeTarget "ParkSmartToolUITests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +555,7 @@
 				969689F81BF440600062640D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
