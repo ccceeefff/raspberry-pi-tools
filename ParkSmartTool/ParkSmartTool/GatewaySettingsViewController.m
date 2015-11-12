@@ -120,7 +120,7 @@
 {
     UIViewController *aVC = [segue destinationViewController];
     if([aVC isKindOfClass:[SensorTableViewController class]]){
-        SensorTableViewController *vc = (GatewaySettingsViewController *)aVC;
+        SensorTableViewController *vc = (SensorTableViewController *)aVC;
         vc.server = self.server;
         vc.port = self.port;
     }

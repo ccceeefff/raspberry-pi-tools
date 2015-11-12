@@ -9,6 +9,7 @@
 #import "SensorTableViewController.h"
 
 #import "SensorTableViewCell.h"
+#import "SensorDataTableViewController.h"
 
 @interface SensorTableViewController ()
 
@@ -64,12 +65,23 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *sensor = self.sensors[indexPath.row];
+    [self performSegueWithIdentifier:@"sensorData" sender:sensor];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UIViewController *aVC = [segue destinationViewController];
+    if([aVC isKindOfClass:[SensorDataTableViewController class]]){
+        SensorDataTableViewController *vc = (SensorDataTableViewController *)aVC;
+        vc.server = self.server;
+        vc.port = self.port;
+        vc.sensor = sender;
+    }
 }
 
 

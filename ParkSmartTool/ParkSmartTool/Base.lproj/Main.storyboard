@@ -273,7 +273,7 @@
             </objects>
             <point key="canvasLocation" x="1526" y="678"/>
         </scene>
-        <!--Title-->
+        <!--Sensors-->
         <scene sceneID="wFo-Vf-I92">
             <objects>
                 <tableViewController id="mLu-9z-qhU" customClass="SensorTableViewController" sceneMemberID="viewController">
@@ -353,11 +353,32 @@
                             <outlet property="delegate" destination="mLu-9z-qhU" id="yVV-yo-WAx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="QWK-rX-Ae5"/>
+                    <navigationItem key="navigationItem" title="Sensors" id="QWK-rX-Ae5"/>
+                    <connections>
+                        <segue destination="rFE-qF-CIB" kind="show" identifier="sensorData" id="35O-Xa-S0l"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mkj-lL-vHH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2318" y="678"/>
+        </scene>
+        <!--Sensor Data Table View Controller-->
+        <scene sceneID="chd-iR-Mee">
+            <objects>
+                <tableViewController id="rFE-qF-CIB" customClass="SensorDataTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" id="Cja-y4-caL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="rFE-qF-CIB" id="oar-sA-4Sk"/>
+                            <outlet property="delegate" destination="rFE-qF-CIB" id="d58-8w-vfk"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nTW-D8-EIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3070" y="678"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ySV-lS-Hif">
