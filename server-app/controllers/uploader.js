@@ -1,9 +1,29 @@
 var http = require('http');
+var Record = require('../models').Record;
 
 function Uploader(host, port){
 	this.host = host;
 	this.port = port;
 }
+
+Uploader.prototype.run = function(){
+	var self = this;
+	Record.findAll({where : {submitted: 0}}).then(function(records){
+		self.submit({
+			macAddr: "1234",
+			locLat: 1.23,
+			locLong: 1.23
+		}
+			, records, function(error){
+			if(error === null){
+				records.forEach(function(record){
+					record.submitted = 1;
+					record.save();
+				});
+			}
+		});
+	});
+};
 
 /** 
  * Uploads an array of items to the cloud server
