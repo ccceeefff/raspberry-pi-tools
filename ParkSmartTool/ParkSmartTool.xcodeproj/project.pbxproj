@@ -15,6 +15,9 @@
 		969689D61BF440600062640D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 969689D41BF440600062640D /* LaunchScreen.storyboard */; };
 		969689E11BF440600062640D /* ParkSmartToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689E01BF440600062640D /* ParkSmartToolTests.m */; };
 		969689EC1BF440600062640D /* ParkSmartToolUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689EB1BF440600062640D /* ParkSmartToolUITests.m */; };
+		969689FB1BF446810062640D /* GatewaySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689FA1BF446810062640D /* GatewaySettingsViewController.m */; };
+		969689FE1BF44A010062640D /* FieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689FD1BF44A010062640D /* FieldTableViewCell.m */; };
+		96968A001BF44EB40062640D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969689FF1BF44EB40062640D /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,11 @@
 		969689E71BF440600062640D /* ParkSmartToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkSmartToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		969689EB1BF440600062640D /* ParkSmartToolUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkSmartToolUITests.m; sourceTree = "<group>"; };
 		969689ED1BF440600062640D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		969689F91BF446810062640D /* GatewaySettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GatewaySettingsViewController.h; sourceTree = "<group>"; };
+		969689FA1BF446810062640D /* GatewaySettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewaySettingsViewController.m; sourceTree = "<group>"; };
+		969689FC1BF44A010062640D /* FieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldTableViewCell.h; sourceTree = "<group>"; };
+		969689FD1BF44A010062640D /* FieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldTableViewCell.m; sourceTree = "<group>"; };
+		969689FF1BF44EB40062640D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96968A001BF44EB40062640D /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +90,7 @@
 		969689BA1BF440600062640D = {
 			isa = PBXGroup;
 			children = (
+				969689FF1BF44EB40062640D /* MapKit.framework */,
 				969689C51BF440600062640D /* ParkSmartTool */,
 				969689DF1BF440600062640D /* ParkSmartToolTests */,
 				969689EA1BF440600062640D /* ParkSmartToolUITests */,
@@ -110,6 +120,10 @@
 				969689D41BF440600062640D /* LaunchScreen.storyboard */,
 				969689D71BF440600062640D /* Info.plist */,
 				969689C61BF440600062640D /* Supporting Files */,
+				969689F91BF446810062640D /* GatewaySettingsViewController.h */,
+				969689FA1BF446810062640D /* GatewaySettingsViewController.m */,
+				969689FC1BF44A010062640D /* FieldTableViewCell.h */,
+				969689FD1BF44A010062640D /* FieldTableViewCell.m */,
 			);
 			path = ParkSmartTool;
 			sourceTree = "<group>";
@@ -207,6 +221,11 @@
 				TargetAttributes = {
 					969689C21BF440600062640D = {
 						CreatedOnToolsVersion = 7.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					969689DB1BF440600062640D = {
 						CreatedOnToolsVersion = 7.1;
@@ -270,7 +289,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				969689FB1BF446810062640D /* GatewaySettingsViewController.m in Sources */,
 				969689CE1BF440600062640D /* ViewController.m in Sources */,
+				969689FE1BF44A010062640D /* FieldTableViewCell.m in Sources */,
 				969689CB1BF440600062640D /* AppDelegate.m in Sources */,
 				969689C81BF440600062640D /* main.m in Sources */,
 			);

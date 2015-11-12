@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import <CoreLocation/CoreLocation.h>
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    if(status != kCLAuthorizationStatusAuthorizedWhenInUse || status != kCLAuthorizationStatusAuthorizedAlways){
+        [[CLLocationManager new] requestWhenInUseAuthorization];
+    }
     return YES;
 }
 

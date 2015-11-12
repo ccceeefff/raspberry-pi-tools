@@ -8,12 +8,18 @@
 
 #import "ViewController.h"
 
+#import "GatewaySettingsViewController.h"
+
 @interface ViewController ()
 
 @property (nonatomic, weak) IBOutlet UITextField *hostField;
 @property (nonatomic, weak) IBOutlet UITextField *portField;
 
 - (IBAction)connect:(id)sender;
+
+@property (nonatomic, strong) NSString *server;
+@property (nonatomic, assign) NSInteger port;
+@property (nonatomic, strong) NSDictionary *settings;
 
 @end
 
@@ -62,6 +68,22 @@
 - (void)configureServer:(NSString *)server withPort:(NSInteger)port andSettings:(NSDictionary *)settings
 {
     NSLog(@"settings: %@", settings);
+    self.server = server;
+    self.port = port;
+    self.settings = settings;
+    [self performSegueWithIdentifier:@"configure"
+                              sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    UIViewController *aVC = [segue destinationViewController];
+    if([aVC isKindOfClass:[GatewaySettingsViewController class]]){
+        GatewaySettingsViewController *vc = (GatewaySettingsViewController *)aVC;
+        vc.server = self.server;
+        vc.port = self.port;
+        vc.settings = self.settings;
+    }
 }
 
 - (void)displayError:(NSString *)error
