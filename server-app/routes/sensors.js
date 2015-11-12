@@ -16,7 +16,7 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/:id', function(req, res, next){
-	sensors.findOne({where: {nodeId: req.nodeId}}).then(function(sensor){
+	sensors.findOne({where: {address: req.nodeId}}).then(function(sensor){
 		if(sensor != null){
 			res.json(sensor);
 		} else {
@@ -26,7 +26,7 @@ router.get('/:id', function(req, res, next){
 });
 
 router.get('/:id/historical', function(req, res, next){
-	records.findAll({where: {nodeId: req.nodeId}}).then(function(results){
+	records.findAll({where: {address: req.nodeId}}).then(function(results){
 		res.json(results);
 	});
 });

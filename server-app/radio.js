@@ -17,6 +17,8 @@ function processSensorData(sensorData, remoteAddress) {
   var remoteAddressHex = remoteAddress.toString('hex');
   console.log('Remote Address: ', remoteAddressHex);
 
+
+
   model.Record.create({
     address: remoteAddressHex,
     value: distance,
@@ -26,6 +28,12 @@ function processSensorData(sensorData, remoteAddress) {
     console.log('address: ', record.address);
     console.log('value: ', record.value);
     console.log('submitted: ', record.submitted);
+
+    model.Sensor.findOne({where: {address: record.address}}).then(function(sensor){
+      sensor.lastValue = distance;
+      sensor.lastTransmission = record.createdAt;
+    });
+
   });
 }
 
