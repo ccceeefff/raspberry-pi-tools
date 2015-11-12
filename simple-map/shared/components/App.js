@@ -1,4 +1,5 @@
 import React from 'react'
+import request from 'superagent'
 import Map from './Map'
 
 class App extends React.Component {
@@ -33,15 +34,25 @@ class App extends React.Component {
     return geoJSON
   }
 
+  handleReceiveData(data) {
+    const geoJSON = this.generateGeoJSON(data)
+    this.setState({ geoJSON: geoJSON })
+  }
+
   componentDidMount() {
     const socket = io()
 
     socket.on('update', (coordinates) => {
-      console.log('update', coordinates)
-      const geoJSON = this.generateGeoJSON(coordinates)
-      console.log(geoJSON)
-      this.setState({ geoJSON: geoJSON })
+      this.handleReceiveData(coordinates)
     })
+
+    request
+      .get('/api/v1/get')
+      .end((err, res) => {
+        if (res.ok) {
+          this.handleReceiveData(res.body)
+        }
+      })
   }
 
   render() {

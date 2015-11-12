@@ -12,7 +12,10 @@ class Map extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.map.removeLayer(this.clusterGroup)
 
-    const clusterGroup = this.clusterGroup = new L.MarkerClusterGroup()
+    const clusterGroup = this.clusterGroup = new L.MarkerClusterGroup({
+      singleMarkerMode: true
+    })
+
     const layer = L.mapbox.featureLayer()
 
     layer.setGeoJSON(nextProps.geoJSON)
@@ -58,7 +61,10 @@ class Map extends React.Component {
     map.on('locationfound', this.handleLocationFound)
     map.locate()
 
-    const clusterGroup = this.clusterGroup = new L.MarkerClusterGroup()
+    const clusterGroup = this.clusterGroup = new L.MarkerClusterGroup({
+      singleMarkerMode: true
+    })
+
     const layer = L.mapbox.featureLayer()
 
     layer.setGeoJSON(this.props.geoJSON)
