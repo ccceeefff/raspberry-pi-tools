@@ -1,7 +1,5 @@
-"use strict";
-
 module.exports = function(sequelize, DataTypes) {
-  var Record = sequelize.define("Record", {
+  var Record = sequelize.define('Record', {
     nodeId: DataTypes.STRING,
     value: DataTypes.INTEGER,
     timestamp: DataTypes.INTEGER,

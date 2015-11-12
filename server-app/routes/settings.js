@@ -6,8 +6,8 @@ var validator = require('validator');
 
 function getSettings(next){
 	model.Setting.findOrCreate({where: {id: 1}, defaults: {
-		name: "",
-		cloud_server_address: "",
+		name: '',
+		cloud_server_address: '',
 		poll_interval: 0,
 		submission_interval: 0,
 		locLat: 0.0,
@@ -21,22 +21,22 @@ function verify_data(data, next){
 	var errorStr = null;
 
 	if(validator.isNull(data)){
-		errorStr = "Submission contains no data";
+		errorStr = 'Submission contains no data';
 	} else if(validator.isNull(data.name)){
-		errorStr = "Invalid name";
+		errorStr = 'Invalid name';
 	} else if(validator.isNull(data.cloud_server_address)){
-		errorStr = "Invalid server address";
+		errorStr = 'Invalid server address';
 	} else if(!validator.isInt(data.submission_interval)){
-		errorStr = "Invalid submission interval";
+		errorStr = 'Invalid submission interval';
 	} else if(!validator.isInt(data.poll_interval)){
-		errorStr = "Invalid poll interval";
+		errorStr = 'Invalid poll interval';
 	} else if(isNaN(validator.toFloat(data.locLat))){
-		errorStr = "Invalid location latitude";
+		errorStr = 'Invalid location latitude';
 	} else if(isNaN(validator.isNumeric(data.locLong))){
-		errorStr = "Invalid location longitude";
+		errorStr = 'Invalid location longitude';
 	}
 
-	console.log("error: " + errorStr);
+	console.log('error: ' + errorStr);
 	if(errorStr !== null){
 		next(new Error(errorStr));
 	} else {
@@ -44,10 +44,9 @@ function verify_data(data, next){
 	}
 }
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
 	getSettings(function(settings){
-		res.json(settings);	
+		res.json(settings);
 	});
 });
 
