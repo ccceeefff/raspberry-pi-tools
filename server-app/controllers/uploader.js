@@ -1,9 +1,40 @@
 var http = require('http');
+var Record = require('../models').Record;
+var Setting = require('../models').Setting;
+
+function getSettings(next){
+	Setting.findOrCreate({where: {id: 1}, defaults: {
+		name: '',
+		cloud_server_address: '',
+		poll_interval: 0,
+		submission_interval: 0,
+		locLat: 0.0,
+		locLong: 0.0
+	}}).spread(function(settings, created){
+		next(settings);
+	});
+}
 
 function Uploader(host, port){
 	this.host = host;
 	this.port = port;
 }
+
+Uploader.prototype.run = function(){
+	var self = this;
+	getSettings(function(settings){
+		Record.findAll({where : {submitted: 0}}).then(function(records){
+			self.submit(settings, records, function(error){
+				if(error === null){
+					records.forEach(function(record){
+						record.submitted = 1;
+						record.save();
+					});
+				}
+			});
+		});
+	});
+};
 
 /** 
  * Uploads an array of items to the cloud server
@@ -22,7 +53,7 @@ Uploader.prototype.submit = function(gatewayInfo, items, next){
     var entries = [];
     items.forEach(function(item){
     	var entry = {
-    		nodeId: item.nodeId,
+    		nodeId: item.address,
     		rawValue: item.value,
     		timestamp: item.createdAt
     	};
@@ -30,7 +61,7 @@ Uploader.prototype.submit = function(gatewayInfo, items, next){
     });
     
     var data = {
-    	gatewayId: gatewayInfo.macAddr,
+    	gatewayId: gatewayInfo.name,
     	locLat: gatewayInfo.locLat,
     	locLong: gatewayInfo.locLong,
     	entries: entries

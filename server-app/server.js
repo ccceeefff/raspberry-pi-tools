@@ -6,6 +6,8 @@ var routes = require('./routes/index');
 var settings = require('./routes/settings');
 var sensors = require('./routes/sensors');
 
+var Uploader = require('./controllers').Uploader;
+
 var radio = require('./radio');
 var app = express();
 
@@ -26,6 +28,11 @@ app.use('/', routes);
 app.use(apiBase + 'settings', settings);
 app.use(apiBase + 'sensors', sensors);
 
+routes.post('/api/v1/submit', function(req, res){
+	console.log("submission: " + JSON.stringify(req.body));
+	res.sendStatus(200);
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -36,6 +43,11 @@ app.use(function(req, res, next) {
 var server = app.listen(app.get('port'), function() {
   var host = server.address().address;
   var port = server.address().port;
+
+  var uploader = new Uploader("10.0.19.109", 3000);
+  setInterval(function(){
+  	uploader.run();
+  }, 5000);
 
   console.log('Server is running at http://' + host + ':' + port);
 })
