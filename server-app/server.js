@@ -45,7 +45,7 @@ var server = app.listen(app.get('port'), function() {
   var port = server.address().port;
 
   var uploader = new Uploader();
-	setInteval(function() {
+	setInterval(function() {
 		uploader.run();
 	}, 1000)
 
