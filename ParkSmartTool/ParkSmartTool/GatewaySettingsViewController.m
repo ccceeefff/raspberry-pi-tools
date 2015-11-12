@@ -47,7 +47,7 @@
     self.title = self.settings[@"name"];
     self.nameField.text = self.settings[@"name"];
     self.cloudAddressField.text = self.settings[@"cloud_server_address"];
-    self.cloudPortField.text = self.settings[@"cloud_server_port"];
+    self.cloudPortField.text = [self.settings[@"cloud_server_port"] isKindOfClass:[NSNumber class]] ? [self.settings[@"cloud_server_port"] stringValue] : @"0";
     self.pollIntervaField.text = [self.settings[@"poll_interval"] stringValue];
     self.submissionIntervalField.text = [self.settings[@"submission_interval"] stringValue];
 //    self.latLabel.text = [self.settings[@"locLat"] stringValue];
