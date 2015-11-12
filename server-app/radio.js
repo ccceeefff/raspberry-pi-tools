@@ -1,67 +1,74 @@
 var NRF24 = require('nrf');
 var buffertools = require('buffertools');
-var request = require('superagent');
+var model = require('./models');
 
 var spiDev = '/dev/spidev0.0';
 var cePin = 24;
 var irqPin = 25;
 var localAddress = 0xF0F0F0F0D2;
+var interval = 100;
 
 var radio = NRF24.connect(spiDev, cePin, irqPin);
 
-function generateRandomInteger(low, high) {
-  return Math.floor(Math.random() * (high - low + 1) + low);
-}
-
-function generateRandomAddress() {
-  var address = new Array(5);
-
-  for (var i = 0; i < address.length; i++) {
-    address[i] = generateRandomInteger(128, 255);
-  }
-
-  return new Buffer(address);
-}
-
 function processSensorData(sensorData, remoteAddress) {
   var distance = (sensorData[0] << 8) | sensorData[1];
-  console.log(distance);
-  console.log(remoteAddress);
+  console.log('Distance: ', distance);
 
   var remoteAddressHex = remoteAddress.toString('hex');
-  console.log(remoteAddressHex);
+  console.log('Remote Address: ', remoteAddressHex);
 
-  request
-   .post('http://parkviz.bekti.io/api/v1/dump')
-   .send({ distance: distance, remoteAddress: remoteAddressHex })
-   .set('Content-Type', 'application/json')
-   .end(function(err, res) {
-     if (err) {
-       console.log('Oh no! Error submitting data.', err);
-     }
-   });
+  model.Record.create({
+    address: remoteAddressHex,
+    value: distance,
+    submitted: 0
+  }).then(function(record) {
+    console.log('New record created.');
+    console.log('address: ', record.address);
+    console.log('value: ', record.value);
+    console.log('submitted: ', record.submitted);
+  });
 }
 
 function replyJoinRequest(remoteAddress) {
-  console.log('Opening TX pipe at:', remoteAddress);
-  var tx = radio.openPipe('tx', remoteAddress);
+  console.log('Got a join request from:', remoteAddress);
+  var remoteAddressHex = remoteAddress.toString('hex');
 
-  var newRemoteAddress = generateRandomAddress();
-  console.log('New remote address:', newRemoteAddress);
+  model.Sensor.findOne({
+    where: {address: remoteAddressHex}
+  }).then(function(sensor) {
+    console.log(sensor);
 
-  setTimeout(function() {
-    var replyPacket = new Buffer(7);
-    replyPacket[0] = 0x00; // Interval high byte
-    replyPacket[1] = 0x05; // Interval low byte
-    newRemoteAddress.copy(replyPacket, 2, 0);
-    buffertools.reverse(replyPacket);
+    if (!sensor) {
+      console.log(!sensor);
 
-    console.log('Replying join request...');
+      var tx = radio.openPipe('tx', remoteAddress);
 
-    tx.write(replyPacket, function() {
-      tx.close();
-    });
-  }, 100);
+      setTimeout(function() {
+        var replyPacket = new Buffer(2);
+        replyPacket[0] = (interval >> 8) & 0xFF; // Interval high byte
+        replyPacket[1] = interval & 0xFF; // Interval low byte
+        buffertools.reverse(replyPacket);
+
+        console.log('Replying join request...');
+
+        tx.write(replyPacket, function() {
+
+          model.Sensor.create({
+            address: remoteAddressHex,
+            pollInterval: interval
+          }).then(function(sensor) {
+            console.log('New sensor created.');
+            console.log('address: ', sensor.address);
+            console.log('pollInterval: ', sensor.pollInterval);
+          });
+
+          tx.close();
+        });
+      }, 100);
+    }
+  });
+
+
 }
 
 function processIncomingData(data) {
@@ -94,7 +101,6 @@ function processIncomingData(data) {
       console.log('Initializing radio...');
 
       var rx = radio.openPipe('rx', localAddress);
-      //var rx = radio.openPipe('rx', localAddress, { autoAck: true, size: 10 });
 
       rx.on('ready', function() {
         radio.printDetails();
