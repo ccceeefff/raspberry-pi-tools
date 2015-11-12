@@ -60,6 +60,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"sensorData"];
     if(cell == nil){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"sensorData"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     NSDictionary *item = self.data[indexPath.row];
