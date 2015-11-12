@@ -20,11 +20,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+        switch (status) {
+            case kCLAuthorizationStatusAuthorizedAlways:
+            case kCLAuthorizationStatusAuthorizedWhenInUse:
+                break;
+            default:
+                [[CLLocationManager new] requestWhenInUseAuthorization];
+                break;
+        }
+    });
     
-    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    if(status != kCLAuthorizationStatusAuthorizedWhenInUse || status != kCLAuthorizationStatusAuthorizedAlways){
-        [[CLLocationManager new] requestWhenInUseAuthorization];
-    }
     return YES;
 }
 
