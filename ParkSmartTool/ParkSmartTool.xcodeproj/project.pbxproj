@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		968F76E61BF54E48004B9AAB /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 968F76E51BF54E48004B9AAB /* WebViewController.m */; };
 		969689C81BF440600062640D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689C71BF440600062640D /* main.m */; };
 		969689CB1BF440600062640D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689CA1BF440600062640D /* AppDelegate.m */; };
 		969689CE1BF440600062640D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689CD1BF440600062640D /* ViewController.m */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		968F76E41BF54E48004B9AAB /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		968F76E51BF54E48004B9AAB /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		969689C31BF440600062640D /* ParkSmartTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkSmartTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		969689C71BF440600062640D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		969689C91BF440600062640D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 				96968A051BF45D050062640D /* SensorTableViewController.m */,
 				96968A071BF45FB70062640D /* SensorDataTableViewController.h */,
 				96968A081BF45FB70062640D /* SensorDataTableViewController.m */,
+				968F76E41BF54E48004B9AAB /* WebViewController.h */,
+				968F76E51BF54E48004B9AAB /* WebViewController.m */,
 			);
 			path = ParkSmartTool;
 			sourceTree = "<group>";
@@ -308,6 +313,7 @@
 				969689CE1BF440600062640D /* ViewController.m in Sources */,
 				969689FE1BF44A010062640D /* FieldTableViewCell.m in Sources */,
 				96968A031BF45CA70062640D /* SensorTableViewCell.m in Sources */,
+				968F76E61BF54E48004B9AAB /* WebViewController.m in Sources */,
 				969689CB1BF440600062640D /* AppDelegate.m in Sources */,
 				96968A091BF45FB70062640D /* SensorDataTableViewController.m in Sources */,
 				969689C81BF440600062640D /* main.m in Sources */,
