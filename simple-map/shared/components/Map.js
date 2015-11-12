@@ -74,7 +74,17 @@ class Map extends React.Component {
   }
 
   handleLocationFound(e) {
-    this.map.setView(e.latlng, 16)
+    const position = e.latlng
+
+    this.map.setView(position, 16)
+
+    if (!this.userMarker) {
+      this.userMarker = L.userMarker(position, {pulsing: true, smallIcon: true})
+      this.userMarker.addTo(this.map)
+      this.map.panTo(position)
+    }
+
+    this.userMarker.setLatLng(position);
   }
 
   render() {
