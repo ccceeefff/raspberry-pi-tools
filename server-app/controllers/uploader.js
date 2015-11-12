@@ -15,9 +15,8 @@ function getSettings(next){
 	});
 }
 
-function Uploader(host, port){
-	this.host = host;
-	this.port = port;
+function Uploader(){
+
 }
 
 Uploader.prototype.run = function(){
@@ -41,8 +40,8 @@ Uploader.prototype.run = function(){
  */
 Uploader.prototype.submit = function(gatewayInfo, items, next){
 	var options = {
-        hostname: this.host,
-        port: this.port, 
+        hostname: gatewayInfo.cloud_server_address,
+        port: gatewayInfo.cloud_server_port, 
         path: '/api/v1/submit',
         method: 'POST',
         headers: {

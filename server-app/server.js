@@ -44,7 +44,7 @@ var server = app.listen(app.get('port'), function() {
   var host = server.address().address;
   var port = server.address().port;
 
-  var uploader = new Uploader("10.0.19.109", 3000);
+  var uploader = new Uploader();
   setInterval(function(){
   	uploader.run();
   }, 5000);
