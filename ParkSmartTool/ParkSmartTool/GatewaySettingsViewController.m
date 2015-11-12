@@ -45,7 +45,7 @@
     self.title = self.settings[@"name"];
     self.nameField.text = self.settings[@"name"];
     self.cloudAddressField.text = self.settings[@"cloud_server_address"];
-    self.cloudPortField.text = @"80";
+    self.cloudPortField.text = self.settings[@"cloud_server_port"];
     self.pollIntervaField.text = [self.settings[@"poll_interval"] stringValue];
     self.submissionIntervalField.text = [self.settings[@"submission_interval"] stringValue];
 //    self.latLabel.text = [self.settings[@"locLat"] stringValue];
