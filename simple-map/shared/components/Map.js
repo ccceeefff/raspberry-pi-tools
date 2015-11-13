@@ -59,7 +59,10 @@ class Map extends React.Component {
     }).addTo(map)
 
     map.on('locationfound', this.handleLocationFound)
-    map.locate()
+    map.locate({
+      watch: true,
+      enableHighAccuracy: true
+    })
 
     const clusterGroup = this.clusterGroup = new L.MarkerClusterGroup({
       singleMarkerMode: true
