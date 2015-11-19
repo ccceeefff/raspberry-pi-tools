@@ -6,7 +6,7 @@ var spiDev = '/dev/spidev0.0';
 var cePin = 24;
 var irqPin = 25;
 var localAddress = 0xF0F0F0F0D2;
-var interval = 100;
+var interval = 10;
 
 var radio = NRF24.connect(spiDev, cePin, irqPin);
 

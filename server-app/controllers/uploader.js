@@ -22,8 +22,6 @@ function Uploader(){
 Uploader.prototype.run = function(){
 	var self = this;
 	getSettings(function(settings){
-		setTimeout(self.run, settings.submission_interval * 1000);
-
 		Record.findAll({where : {submitted: 0}}).then(function(records){
 			self.submit(settings, records, function(error){
 				if(error === null){

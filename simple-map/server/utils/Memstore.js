@@ -44,7 +44,7 @@ class Memstore {
           if (nodes.hasOwnProperty(nodeId)) {
             const node = nodes[nodeId]
 
-            if (node.value > threshold) {
+            if ((node.value == 0) || (node.value > threshold)) {
               coordinates.push([gateway.lng, gateway.lat])
             }
           }
