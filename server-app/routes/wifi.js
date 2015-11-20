@@ -11,11 +11,11 @@ var model  = require('../models');
 var runningConfigureScripts = false;
 
 function registerToCloudServer(next){
-	var uploader = new Uploader();
 	networkMonitor.interfaces.ifconfig('wlan0', function(error, ifaces){
 		var wlan0 = ifaces['wlan0'];
 		console.log('ip_addr: ' + wlan0.ip_addr);
 		console.log('mac_addr: ' + wlan0.mac_addr);	
+		var uploader = new Uploader(wlan0.mac_addr);
 		uploader.register(wlan0.ip_addr, wlan0.mac_addr, function(){
 			next();
 		});

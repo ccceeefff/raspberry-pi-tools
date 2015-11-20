@@ -15,8 +15,8 @@ function getSettings(next){
 	});
 }
 
-function Uploader(){
-
+function Uploader(macAddress){
+    this.macAddress = macAddress;
 }
 
 Uploader.prototype.register = function(ipAddress, macAddress, next){
@@ -71,6 +71,7 @@ Uploader.prototype.run = function(){
  * Uploads an array of items to the cloud server
  */
 Uploader.prototype.submit = function(gatewayInfo, items, next){
+    var macAddress = this.macAddress;
 	var options = {
         hostname: gatewayInfo.cloud_server_address,
         port: gatewayInfo.cloud_server_port,
@@ -92,7 +93,7 @@ Uploader.prototype.submit = function(gatewayInfo, items, next){
     });
 
     var data = {
-    	gatewayId: gatewayInfo.name,
+    	gatewayId: macAddress,
     	locLat: gatewayInfo.locLat,
     	locLong: gatewayInfo.locLong,
     	entries: entries

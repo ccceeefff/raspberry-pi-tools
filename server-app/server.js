@@ -6,6 +6,7 @@ var routes = require('./routes/index');
 var settings = require('./routes/settings');
 var sensors = require('./routes/sensors');
 var wifi = require('./routes/wifi');
+var networkMonitor = require('./network-monitor');
 
 var Uploader = require('./controllers').Uploader;
 
@@ -46,11 +47,15 @@ var server = app.listen(app.get('port'), function() {
   var host = server.address().address;
   var port = server.address().port;
 
-  var uploader = new Uploader();
-	setInterval(function() {
-		uploader.run();
-	}, 60000)
-
+  networkMonitor.interfaces.ifconfig('wlan0', function(error, ifaces){
+    var wlan0 = ifaces['wlan0'];
+    console.log('mac_addr: ' + wlan0.mac_addr);
+    var uploader = new Uploader(wlan0.mac_addr);
+    setInterval(function() {
+      uploader.run();
+    }, 60000)
+  });
+  
   console.log('Server is running at http://' + host + ':' + port);
 })
 
