@@ -19,6 +19,38 @@ function Uploader(){
 
 }
 
+Uploader.prototype.register = function(ipAddress, macAddress, next){
+    getSettings(function(gatewayInfo){
+        var options = {
+            hostname: gatewayInfo.cloud_server_address,
+            port: gatewayInfo.cloud_server_port,
+            path: '/register',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        var data = {
+            'ip_addr' : ipAddress,
+            'mac_addr' : macAddress
+        };
+        var req = http.request(options, function(res){
+            res.on('data', function (chunk) {
+                if(res.statusCode == 200){
+                    next(null, chunk);
+                } else {
+                    next(new Error("Failed to register"));
+                }
+            });
+        });
+        req.on("error", function(e){
+            next(e);
+        });
+        req.write(JSON.stringify(data));
+        req.end();
+    });
+};
+
 Uploader.prototype.run = function(){
 	var self = this;
 	getSettings(function(settings){
