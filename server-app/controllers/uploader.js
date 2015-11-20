@@ -31,8 +31,8 @@ Uploader.prototype.register = function(ipAddress, macAddress, next){
             }
         };
         var data = {
-            'ip_addr' : ipAddress,
-            'mac_addr' : macAddress
+            'ip' : ipAddress,
+            'mac' : macAddress
         };
         var req = http.request(options, function(res){
             res.on('data', function (chunk) {
