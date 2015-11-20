@@ -4,7 +4,7 @@ var router = express.Router();
 var networkMonitor = require('../network-monitor');
 var networkConfigure = require('../network-configure');
 var async = require('async');
-var uploader = require('../controllers').Uploader;
+var Uploader = require('../controllers').Uploader;
 
 var model  = require('../models');
 
