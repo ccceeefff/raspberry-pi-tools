@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		968F76E61BF54E48004B9AAB /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 968F76E51BF54E48004B9AAB /* WebViewController.m */; };
+		969689C81BF440600062640D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689C71BF440600062640D /* main.m */; };
+		969689CB1BF440600062640D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689CA1BF440600062640D /* AppDelegate.m */; };
+		969689CE1BF440600062640D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689CD1BF440600062640D /* ViewController.m */; };
+		969689D11BF440600062640D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 969689CF1BF440600062640D /* Main.storyboard */; };
+		969689D31BF440600062640D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 969689D21BF440600062640D /* Assets.xcassets */; };
+		969689D61BF440600062640D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 969689D41BF440600062640D /* LaunchScreen.storyboard */; };
+		969689E11BF440600062640D /* ParkSmartToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689E01BF440600062640D /* ParkSmartToolTests.m */; };
+		969689EC1BF440600062640D /* ParkSmartToolUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689EB1BF440600062640D /* ParkSmartToolUITests.m */; };
+		969689FB1BF446810062640D /* GatewaySettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689FA1BF446810062640D /* GatewaySettingsViewController.m */; };
+		969689FE1BF44A010062640D /* FieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 969689FD1BF44A010062640D /* FieldTableViewCell.m */; };
+		96968A001BF44EB40062640D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 969689FF1BF44EB40062640D /* MapKit.framework */; };
+		96968A031BF45CA70062640D /* SensorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96968A021BF45CA70062640D /* SensorTableViewCell.m */; };
+		96968A061BF45D050062640D /* SensorTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96968A051BF45D050062640D /* SensorTableViewController.m */; };
+		96968A091BF45FB70062640D /* SensorDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96968A081BF45FB70062640D /* SensorDataTableViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		969689DD1BF440600062640D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 969689BB1BF440600062640D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 969689C21BF440600062640D;
+			remoteInfo = ParkSmartTool;
+		};
+		969689E81BF440600062640D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 969689BB1BF440600062640D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 969689C21BF440600062640D;
+			remoteInfo = ParkSmartTool;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		968F76E41BF54E48004B9AAB /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		968F76E51BF54E48004B9AAB /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		969689C31BF440600062640D /* ParkSmartTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParkSmartTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		969689C71BF440600062640D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		969689C91BF440600062640D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		969689CA1BF440600062640D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		969689CC1BF440600062640D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		969689CD1BF440600062640D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		969689D01BF440600062640D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		969689D21BF440600062640D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		969689D51BF440600062640D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		969689D71BF440600062640D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		969689DC1BF440600062640D /* ParkSmartToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkSmartToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		969689E01BF440600062640D /* ParkSmartToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkSmartToolTests.m; sourceTree = "<group>"; };
+		969689E21BF440600062640D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		969689E71BF440600062640D /* ParkSmartToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParkSmartToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		969689EB1BF440600062640D /* ParkSmartToolUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParkSmartToolUITests.m; sourceTree = "<group>"; };
+		969689ED1BF440600062640D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		969689F91BF446810062640D /* GatewaySettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GatewaySettingsViewController.h; sourceTree = "<group>"; };
+		969689FA1BF446810062640D /* GatewaySettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GatewaySettingsViewController.m; sourceTree = "<group>"; };
+		969689FC1BF44A010062640D /* FieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldTableViewCell.h; sourceTree = "<group>"; };
+		969689FD1BF44A010062640D /* FieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldTableViewCell.m; sourceTree = "<group>"; };
+		969689FF1BF44EB40062640D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		96968A011BF45CA70062640D /* SensorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTableViewCell.h; sourceTree = "<group>"; };
+		96968A021BF45CA70062640D /* SensorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableViewCell.m; sourceTree = "<group>"; };
+		96968A041BF45D050062640D /* SensorTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorTableViewController.h; sourceTree = "<group>"; };
+		96968A051BF45D050062640D /* SensorTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorTableViewController.m; sourceTree = "<group>"; };
+		96968A071BF45FB70062640D /* SensorDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorDataTableViewController.h; sourceTree = "<group>"; };
+		96968A081BF45FB70062640D /* SensorDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SensorDataTableViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		969689C01BF440600062640D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96968A001BF44EB40062640D /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		969689D91BF440600062640D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		969689E41BF440600062640D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		969689BA1BF440600062640D = {
+			isa = PBXGroup;
+			children = (
+				969689FF1BF44EB40062640D /* MapKit.framework */,
+				969689C51BF440600062640D /* ParkSmartTool */,
+				969689DF1BF440600062640D /* ParkSmartToolTests */,
+				969689EA1BF440600062640D /* ParkSmartToolUITests */,
+				969689C41BF440600062640D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		969689C41BF440600062640D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				969689C31BF440600062640D /* ParkSmartTool.app */,
+				969689DC1BF440600062640D /* ParkSmartToolTests.xctest */,
+				969689E71BF440600062640D /* ParkSmartToolUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		969689C51BF440600062640D /* ParkSmartTool */ = {
+			isa = PBXGroup;
+			children = (
+				969689C91BF440600062640D /* AppDelegate.h */,
+				969689CA1BF440600062640D /* AppDelegate.m */,
+				969689CC1BF440600062640D /* ViewController.h */,
+				969689CD1BF440600062640D /* ViewController.m */,
+				969689CF1BF440600062640D /* Main.storyboard */,
+				969689D21BF440600062640D /* Assets.xcassets */,
+				969689D41BF440600062640D /* LaunchScreen.storyboard */,
+				969689D71BF440600062640D /* Info.plist */,
+				969689C61BF440600062640D /* Supporting Files */,
+				969689F91BF446810062640D /* GatewaySettingsViewController.h */,
+				969689FA1BF446810062640D /* GatewaySettingsViewController.m */,
+				969689FC1BF44A010062640D /* FieldTableViewCell.h */,
+				969689FD1BF44A010062640D /* FieldTableViewCell.m */,
+				96968A011BF45CA70062640D /* SensorTableViewCell.h */,
+				96968A021BF45CA70062640D /* SensorTableViewCell.m */,
+				96968A041BF45D050062640D /* SensorTableViewController.h */,
+				96968A051BF45D050062640D /* SensorTableViewController.m */,
+				96968A071BF45FB70062640D /* SensorDataTableViewController.h */,
+				96968A081BF45FB70062640D /* SensorDataTableViewController.m */,
+				968F76E41BF54E48004B9AAB /* WebViewController.h */,
+				968F76E51BF54E48004B9AAB /* WebViewController.m */,
+			);
+			path = ParkSmartTool;
+			sourceTree = "<group>";
+		};
+		969689C61BF440600062640D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				969689C71BF440600062640D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		969689DF1BF440600062640D /* ParkSmartToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				969689E01BF440600062640D /* ParkSmartToolTests.m */,
+				969689E21BF440600062640D /* Info.plist */,
+			);
+			path = ParkSmartToolTests;
+			sourceTree = "<group>";
+		};
+		969689EA1BF440600062640D /* ParkSmartToolUITests */ = {
+			isa = PBXGroup;
+			children = (
+				969689EB1BF440600062640D /* ParkSmartToolUITests.m */,
+				969689ED1BF440600062640D /* Info.plist */,
+			);
+			path = ParkSmartToolUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		969689C21BF440600062640D /* ParkSmartTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 969689F01BF440600062640D /* Build configuration list for PBXNativeTarget "ParkSmartTool" */;
+			buildPhases = (
+				969689BF1BF440600062640D /* Sources */,
+				969689C01BF440600062640D /* Frameworks */,
+				969689C11BF440600062640D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ParkSmartTool;
+			productName = ParkSmartTool;
+			productReference = 969689C31BF440600062640D /* ParkSmartTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+		969689DB1BF440600062640D /* ParkSmartToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 969689F31BF440600062640D /* Build configuration list for PBXNativeTarget "ParkSmartToolTests" */;
+			buildPhases = (
+				969689D81BF440600062640D /* Sources */,
+				969689D91BF440600062640D /* Frameworks */,
+				969689DA1BF440600062640D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				969689DE1BF440600062640D /* PBXTargetDependency */,
+			);
+			name = ParkSmartToolTests;
+			productName = ParkSmartToolTests;
+			productReference = 969689DC1BF440600062640D /* ParkSmartToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		969689E61BF440600062640D /* ParkSmartToolUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 969689F61BF440600062640D /* Build configuration list for PBXNativeTarget "ParkSmartToolUITests" */;
+			buildPhases = (
+				969689E31BF440600062640D /* Sources */,
+				969689E41BF440600062640D /* Frameworks */,
+				969689E51BF440600062640D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				969689E91BF440600062640D /* PBXTargetDependency */,
+			);
+			name = ParkSmartToolUITests;
+			productName = ParkSmartToolUITests;
+			productReference = 969689E71BF440600062640D /* ParkSmartToolUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		969689BB1BF440600062640D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = CMU;
+				TargetAttributes = {
+					969689C21BF440600062640D = {
+						CreatedOnToolsVersion = 7.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					969689DB1BF440600062640D = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 969689C21BF440600062640D;
+					};
+					969689E61BF440600062640D = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 969689C21BF440600062640D;
+					};
+				};
+			};
+			buildConfigurationList = 969689BE1BF440600062640D /* Build configuration list for PBXProject "ParkSmartTool" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 969689BA1BF440600062640D;
+			productRefGroup = 969689C41BF440600062640D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				969689C21BF440600062640D /* ParkSmartTool */,
+				969689DB1BF440600062640D /* ParkSmartToolTests */,
+				969689E61BF440600062640D /* ParkSmartToolUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		969689C11BF440600062640D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				969689D61BF440600062640D /* LaunchScreen.storyboard in Resources */,
+				969689D31BF440600062640D /* Assets.xcassets in Resources */,
+				969689D11BF440600062640D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		969689DA1BF440600062640D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		969689E51BF440600062640D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		969689BF1BF440600062640D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				969689FB1BF446810062640D /* GatewaySettingsViewController.m in Sources */,
+				969689CE1BF440600062640D /* ViewController.m in Sources */,
+				969689FE1BF44A010062640D /* FieldTableViewCell.m in Sources */,
+				96968A031BF45CA70062640D /* SensorTableViewCell.m in Sources */,
+				968F76E61BF54E48004B9AAB /* WebViewController.m in Sources */,
+				969689CB1BF440600062640D /* AppDelegate.m in Sources */,
+				96968A091BF45FB70062640D /* SensorDataTableViewController.m in Sources */,
+				969689C81BF440600062640D /* main.m in Sources */,
+				96968A061BF45D050062640D /* SensorTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		969689D81BF440600062640D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				969689E11BF440600062640D /* ParkSmartToolTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		969689E31BF440600062640D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				969689EC1BF440600062640D /* ParkSmartToolUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		969689DE1BF440600062640D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 969689C21BF440600062640D /* ParkSmartTool */;
+			targetProxy = 969689DD1BF440600062640D /* PBXContainerItemProxy */;
+		};
+		969689E91BF440600062640D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 969689C21BF440600062640D /* ParkSmartTool */;
+			targetProxy = 969689E81BF440600062640D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		969689CF1BF440600062640D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				969689D01BF440600062640D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		969689D41BF440600062640D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				969689D51BF440600062640D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		969689EE1BF440600062640D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Phunware, Inc./";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "c8ee9a15-1604-4184-bf59-63c3b8c70713";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		969689EF1BF440600062640D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "c8ee9a15-1604-4184-bf59-63c3b8c70713";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		969689F11BF440600062640D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = ParkSmartTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmu.parksmart.ParkSmartTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		969689F21BF440600062640D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = ParkSmartTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmu.parksmart.ParkSmartTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		969689F41BF440600062640D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ParkSmartToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmu.parksmart.ParkSmartToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParkSmartTool.app/ParkSmartTool";
+			};
+			name = Debug;
+		};
+		969689F51BF440600062640D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ParkSmartToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmu.parksmart.ParkSmartToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ParkSmartTool.app/ParkSmartTool";
+			};
+			name = Release;
+		};
+		969689F71BF440600062640D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ParkSmartToolUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmu.parksmart.ParkSmartToolUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ParkSmartTool;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		969689F81BF440600062640D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ParkSmartToolUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmu.parksmart.ParkSmartToolUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = ParkSmartTool;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		969689BE1BF440600062640D /* Build configuration list for PBXProject "ParkSmartTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				969689EE1BF440600062640D /* Debug */,
+				969689EF1BF440600062640D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		969689F01BF440600062640D /* Build configuration list for PBXNativeTarget "ParkSmartTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				969689F11BF440600062640D /* Debug */,
+				969689F21BF440600062640D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		969689F31BF440600062640D /* Build configuration list for PBXNativeTarget "ParkSmartToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				969689F41BF440600062640D /* Debug */,
+				969689F51BF440600062640D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		969689F61BF440600062640D /* Build configuration list for PBXNativeTarget "ParkSmartToolUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				969689F71BF440600062640D /* Debug */,
+				969689F81BF440600062640D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 969689BB1BF440600062640D /* Project object */;
+}
