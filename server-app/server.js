@@ -59,6 +59,8 @@ var server = app.listen(app.get('port'), function() {
   console.log('Server is running at http://' + host + ':' + port);
 })
 
+// run on startup
+wifi.checkWiFiState();
 setInterval(function(){
   wifi.checkWiFiState();
 }, 1000 * 60 * 5); // every 5 minutes
