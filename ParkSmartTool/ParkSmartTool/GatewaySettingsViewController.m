@@ -12,6 +12,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 #import "SensorTableViewController.h"
+#import "GatewayWifiSettingsViewController.h"
 
 @interface GatewaySettingsViewController () <MKMapViewDelegate>
 
@@ -121,6 +122,10 @@
     UIViewController *aVC = [segue destinationViewController];
     if([aVC isKindOfClass:[SensorTableViewController class]]){
         SensorTableViewController *vc = (SensorTableViewController *)aVC;
+        vc.server = self.server;
+        vc.port = self.port;
+    } else if([aVC isKindOfClass:[GatewayWifiSettingsViewController class]]){
+        GatewayWifiSettingsViewController *vc = (GatewayWifiSettingsViewController *)aVC;
         vc.server = self.server;
         vc.port = self.port;
     }

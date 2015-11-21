@@ -15,9 +15,41 @@ function getSettings(next){
 	});
 }
 
-function Uploader(){
-
+function Uploader(macAddress){
+    this.macAddress = macAddress;
 }
+
+Uploader.prototype.register = function(ipAddress, macAddress, next){
+    getSettings(function(gatewayInfo){
+        var options = {
+            hostname: gatewayInfo.cloud_server_address,
+            port: gatewayInfo.cloud_server_port,
+            path: '/register',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        var data = {
+            'ip' : ipAddress,
+            'mac' : macAddress
+        };
+        var req = http.request(options, function(res){
+            res.on('data', function (chunk) {
+                if(res.statusCode == 200){
+                    next(null, chunk);
+                } else {
+                    next(new Error("Failed to register"));
+                }
+            });
+        });
+        req.on("error", function(e){
+            next(e);
+        });
+        req.write(JSON.stringify(data));
+        req.end();
+    });
+};
 
 Uploader.prototype.run = function(){
 	var self = this;
@@ -39,6 +71,7 @@ Uploader.prototype.run = function(){
  * Uploads an array of items to the cloud server
  */
 Uploader.prototype.submit = function(gatewayInfo, items, next){
+    var macAddress = this.macAddress;
 	var options = {
         hostname: gatewayInfo.cloud_server_address,
         port: gatewayInfo.cloud_server_port,
@@ -60,7 +93,7 @@ Uploader.prototype.submit = function(gatewayInfo, items, next){
     });
 
     var data = {
-    	gatewayId: gatewayInfo.name,
+    	gatewayId: macAddress,
     	locLat: gatewayInfo.locLat,
     	locLong: gatewayInfo.locLong,
     	entries: entries
